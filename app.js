@@ -1,43 +1,46 @@
 
-  // GLOBAL VARIABLE
-  // This variable is global because it is declared outside any block or function
 
-  var globalNumber = 10;
-  console.log("Global variable value:", globalNumber);
+// OBJECT WITH MULTIPLE PROPERTIES
 
-
-  // BLOCK VARIABLE
-  // This variable only exists inside this block
-
-  {
-    let blockNumber = 5;
-    console.log("Block variable value:", blockNumber);
-  }
+const artist = {
+  name: "Alex Rivera",
+  specialty: "Digital Illustration",
+  baseRate: 75,
+  experience: 5
+};
 
 
-  // MATHEMATICAL OPERATIONS
-
-  let sum = globalNumber + 15;
-  let product = globalNumber * 2;
-  console.log("Sum:", sum);
-  console.log("Product:", product);
-
-
-  // STRING VARIABLE
-  // This variable stores text
-
-  let message = "Hello from JavaScript!";
-  console.log("String variable:", message);
+// FUNCTION 1
+function displayArtistInfo(artistObj) {
+  document.getElementById("artistName").textContent = artistObj.name;
+  document.getElementById("artistInfo").textContent =
+    `Specialty: ${artistObj.specialty} | Experience: ${artistObj.experience} years`;
+}
 
 
-  // OBJECT VARIABLE (using const)
+// FUNCTION 2
+function calculateCommissionPrice(rate, hours) {
+  return rate * hours;
+}
 
-  const student = {
-    name: "Jakoby",
-    course: "Web Development",
-    year: 2026
-  };
 
-  console.log("Object variable:", student);
-  console.log("Student name:", student.name);
+// FUNCTION 3
+function handlePriceCalculation() {
+  const estimatedHours = 4;
+  const totalPrice = calculateCommissionPrice(artist.baseRate, estimatedHours);
 
+  document.getElementById("priceOutput").textContent =
+    `Estimated price for ${estimatedHours} hours: $${totalPrice}`;
+}
+
+
+// EVENT LISTENER
+
+document
+  .getElementById("priceBtn")
+  .addEventListener("click", handlePriceCalculation);
+
+
+// INVOKE FUNCTION ON PAGE LOAD
+
+displayArtistInfo(artist);
