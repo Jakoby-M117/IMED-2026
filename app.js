@@ -1,46 +1,59 @@
 
+// Basic Variables
 
-// OBJECT WITH MULTIPLE PROPERTIES
-
-const artist = {
-  name: "Alex Rivera",
-  specialty: "Digital Illustration",
-  baseRate: 75,
-  experience: 5
-};
+let name = "Jakoby";
+let itemType = "print";
+let price = 25.5;
+let quantity = 2;
 
 
-// FUNCTION 1
-function displayArtistInfo(artistObj) {
-  document.getElementById("artistName").textContent = artistObj.name;
-  document.getElementById("artistInfo").textContent =
-    `Specialty: ${artistObj.specialty} | Experience: ${artistObj.experience} years`;
+// Concatenated String Variable
+
+let summary = "Customer " + name + " ordered " + quantity + 
+              " " + itemType + " items.";
+
+
+// Main Function
+
+function checkOrder() {
+
+  // String Method
+  let lowerCaseItem = itemType.toLowerCase();
+
+  // Number Method
+  let total = (price * quantity).toFixed(2);
+
+  // If Statement
+  let message;
+  if (total > 50) {
+    message = "You qualify for free shipping!";
+  } else {
+    message = "Shipping fees apply.";
+  }
+
+  // Switch Statement
+  let typeMessage;
+  switch (lowerCaseItem) {
+    case "print":
+      typeMessage = "Printed artwork selected.";
+      break;
+    case "canvas":
+      typeMessage = "Canvas artwork selected.";
+      break;
+
+  }
+
+  // Output to page
+  document.getElementById("output").innerHTML =
+    summary + "<br>" +
+    "Total: $" + total + "<br>" +
+    message + "<br>" +
+    typeMessage;
 }
 
 
-// FUNCTION 2
-function calculateCommissionPrice(rate, hours) {
-  return rate * hours;
-}
+// Event Listener
 
+document.getElementById("orderBtn")
+  .addEventListener("click", checkOrder);
 
-// FUNCTION 3
-function handlePriceCalculation() {
-  const estimatedHours = 4;
-  const totalPrice = calculateCommissionPrice(artist.baseRate, estimatedHours);
-
-  document.getElementById("priceOutput").textContent =
-    `Estimated price for ${estimatedHours} hours: $${totalPrice}`;
-}
-
-
-// EVENT LISTENER
-
-document
-  .getElementById("priceBtn")
-  .addEventListener("click", handlePriceCalculation);
-
-
-// INVOKE FUNCTION ON PAGE LOAD
-
-displayArtistInfo(artist);
