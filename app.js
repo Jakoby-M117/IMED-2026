@@ -1,59 +1,55 @@
 
-// Basic Variables
+// variable that controls theme
 
-let name = "Jakoby";
-let itemType = "print";
-let price = 25.5;
-let quantity = 2;
+let theme = "light";
 
 
-// Concatenated String Variable
+// For Loops - Create color boxes
 
-let summary = "Customer " + name + " ordered " + quantity + 
-              " " + itemType + " items.";
+const colors = ["Red", "Blue", "Green", "Purple"];
 
+function generateList() {
+  const container = document.getElementById("listContainer");
+  container.innerHTML = "";
 
-// Main Function
+  for (let i = 0; i < colors.length; i++) {
+    const div = document.createElement("div");
+    div.className = "box";
+    div.textContent = colors[i];
 
-function checkOrder() {
+    // Change CSS with JS
+    div.style.backgroundColor = colors[i].toLowerCase();
 
-  // String Method
-  let lowerCaseItem = itemType.toLowerCase();
-
-  // Number Method
-  let total = (price * quantity).toFixed(2);
-
-  // If Statement
-  let message;
-  if (total > 50) {
-    message = "You qualify for free shipping!";
-  } else {
-    message = "Shipping fees apply.";
+    container.appendChild(div);
   }
-
-  // Switch Statement
-  let typeMessage;
-  switch (lowerCaseItem) {
-    case "print":
-      typeMessage = "Printed artwork selected.";
-      break;
-    case "canvas":
-      typeMessage = "Canvas artwork selected.";
-      break;
-
-  }
-
-  // Output to page
-  document.getElementById("output").innerHTML =
-    summary + "<br>" +
-    "Total: $" + total + "<br>" +
-    message + "<br>" +
-    typeMessage;
 }
 
 
-// Event Listener
+// While Loop 
 
-document.getElementById("orderBtn")
-  .addEventListener("click", checkOrder);
+let count = 0;
+while (count < 1) {
+  console.log("Page loaded successfully.");
+  count++;
+}
 
+// Change CSS Based on Variable
+
+document.getElementById("toggleThemeBtn")
+  .addEventListener("click", function () {
+
+    if (theme === "light") {
+      document.body.style.backgroundColor = "#222";
+      document.body.style.color = "white";
+      theme = "dark";
+    } else {
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      theme = "light";
+    }
+
+  });
+
+// Event for generating list
+document.getElementById("generateBtn")
+  .addEventListener("click", generateList);
