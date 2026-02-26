@@ -2,36 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Loop & DOM</title>
+  <title>Art Cart System</title>
   <style>
     body {
       font-family: Arial;
       margin: 40px;
-      transition: background-color 0.3s ease;
-    }
-    .box {
-      padding: 10px;
-      margin: 5px 0;
-      border: 2px solid #333;
-      width: 200px;
     }
     button {
+      padding: 6px 10px;
       margin-top: 10px;
-      padding: 6px 12px;
+    }
+    .output {
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
 
-<h1>Favorite Colors List</h1>
+  <h1>Art Cart System</h1>
+  <p>This page is using objects, object methods, arrays, and array methods.</p>
 
-<button id="generateBtn">Generate List</button>
-<button id="toggleThemeBtn">Toggle Theme</button>
+  <button id="showCartBtn">Show Cart</button>
+  <button id="filterExpensiveBtn">Show Expensive Items</button>
 
-<div id="listContainer"></div>
+  <div class="output" id="cartOutput"></div>
 
-
-<script src="app.js"></script>
+  <script src="app.js"></script>
 
 </body>
 </html>
